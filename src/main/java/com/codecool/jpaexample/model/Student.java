@@ -27,6 +27,10 @@ public class Student {
     @OneToOne
     private Address address;
 
+    @ElementCollection
+    @CollectionTable(name = "phone")
+    private List<String> phoneNumbers = new ArrayList<>();
+
     public Student() {
     }
 
@@ -41,6 +45,11 @@ public class Student {
     public Student(String name, String email, Date dateOfBirth, Address address) {
         this(name, email, dateOfBirth);
         this.address = address;
+    }
+
+    public Student(String name, String email, Date dateOfBirth, Address address, List<String> phoneNumbers) {
+        this(name, email, dateOfBirth, address);
+        this.phoneNumbers.addAll(phoneNumbers);
     }
 
     public long getId() {
@@ -85,6 +94,14 @@ public class Student {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<String> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(List<String> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
     }
 
     @Override
