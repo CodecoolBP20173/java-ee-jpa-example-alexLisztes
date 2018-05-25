@@ -31,6 +31,10 @@ public class Student {
     @CollectionTable(name = "phone")
     private List<String> phoneNumbers = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "class_name")
+    private Klass clazz;
+
     public Student() {
     }
 
@@ -114,4 +118,11 @@ public class Student {
                 '}';
     }
 
+    public Klass getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(Klass clazz) {
+        this.clazz = clazz;
+    }
 }

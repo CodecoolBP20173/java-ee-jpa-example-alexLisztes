@@ -9,7 +9,7 @@ import java.util.Set;
 public class Klass {
     @Id
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "clazz")
     private Set<Student> students = new HashSet<>();
 
     public Klass() {}
@@ -31,6 +31,7 @@ public class Klass {
     }
 
     public void addStudent(Student student) {
+        student.setClazz(this);
         students.add(student);
     }
 
