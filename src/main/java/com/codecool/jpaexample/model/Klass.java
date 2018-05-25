@@ -11,11 +11,14 @@ public class Klass {
     private String name;
     @OneToMany(mappedBy = "clazz")
     private Set<Student> students = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    private CCLocation location;
 
     public Klass() {}
 
-    public Klass(String name) {
+    public Klass(String name, CCLocation location) {
         this.name = name;
+        this.location = location;
     }
 
     public String getName() {
@@ -35,4 +38,11 @@ public class Klass {
         students.add(student);
     }
 
+    public CCLocation getLocation() {
+        return location;
+    }
+
+    public void setLocation(CCLocation location) {
+        this.location = location;
+    }
 }
